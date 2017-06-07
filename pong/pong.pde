@@ -9,7 +9,8 @@ void draw() {
 }
 
 void drawGameScreen() {
-  // Draw background
+  int bgColor = 0;
+  
   // Update Ball Velocity and Resolve Collisions
   // Update Ball and Paddle Positions
   // Draw Ball and Paddles
@@ -17,15 +18,20 @@ void drawGameScreen() {
 }
 
 void drawBall() {
-  // Display Ball in correct position
+  ballRadius = 10;
+  ballColor = 255;
 }
 
 void drawPaddles() {
-  // Display Left and Right paddles in correct position
+  paddleLength = 3;
+  paddleWidth = 4;
+  paddleColor =
+  
 }
 
 void resetGame(){
-  // Reset Ball and Paddle Positions
+  //
+  Reset Ball and Paddle Positions
   // Reset Ball Velocity
 }
 
