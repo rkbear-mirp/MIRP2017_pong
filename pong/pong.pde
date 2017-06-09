@@ -1,76 +1,50 @@
-
-float MAX_VELOCITY = 10;
-
 void setup() {
-  size(displayWidth, displayHeight);
-   resetGame();
-  textFont(createFont("Arial Bold", 50));
-}
-void resetGame(){
-  ballX=displayWidth/2;
-  ballY=displayHeight/3;
-  ballVx=10;
-  ballVy=1;
-  //Reset Ball and Paddle Positions
-  // Reset Ball Velocity
-
+size(displayWidth, displayHeight);
+resetGame();
+textFont(createFont("Arial Bold", 50));
 }
 void draw() {
-  drawGameScreen();
+drawGameScreen();
 drawBall();
 drawPaddles();
 rightLose();
 leftLose();
 displayScores();
 resetGame();
-  
-  background(bgColor);
-  drawGameScreen();
-
-  drawBall();
-  updateBallVelocity();
-  updateBallPosition();
-
-  detectKeys();
 }
-
 void drawGameScreen() {
-  background(bgColor);
- updateBallVelocity();
-  drawBall();
-  drawPaddles();
-    
-
-
-  drawBall();
-  //updateBallVelocity();
-  //updateBallPosition();
- 
+background(bgColor);// Draw background
+updateBallPosition();
+updateBallVelocity();
+updatePaddlePositions(); // Update Ball Velocity and Resolve Collisions
+// Update Ball and Paddle Positions
+// Draw Ball and Paddles
+// Display Scores
 }
-
-  // Update Ball Velocity and Resolve Collisions
-  // Update Ball and Paddle Positions
-  // Draw Ball and Paddles
-  // Display Scores
-
-
 void drawBall() {
- fill(255);
- println(ballX,ballY);
- ellipse(ballX,ballY,2*ballRadius,2*ballRadius);
+// Display Ball in correct position
+background(bgColor);
+fill(ballColor);
+ellipse(ballX, ballY,ballWidth,ballHeight);
 }
-
 void drawPaddles() {
-fill(paddleColor); 
-rectMode(CENTER);
-  rect(displayWidth-40, leftPaddle, paddleWidth, paddleLength);
-  rectMode(CENTER);
-  rect(40, rightPaddle, paddleWidth, paddleLength); 
-  
+// Display Left and Right paddles in correct position
+fill(paddleColor);
+rect(0,leftPaddle,paddleWidth,paddleLength);
+fill(paddleColor);
+rect(displayWidth-paddleWidth,rightPaddle,paddleWidth,paddleLength);
 }
-
-
-
+void resetGame(){
+if(reset||(ballX>displayWidth-ballRadius)||(ballX<ballRadius)) {
+drawGameScreen();
+ballX=displayWidth/2;
+ballY=displayHeight/2;
+drawBall();// Reset Ball and Paddle Positions
+drawPaddles();
+// Reset Ball Velocity
+}
+}
 void displayScores() {
-  // Display Left and Right player Scores
+text(leftScore,100,550);
+text(rightScore,550,550);// Display Left and Right player Scores
 }
